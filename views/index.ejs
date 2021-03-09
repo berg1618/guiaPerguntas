@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>guia perguntas</title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+
+	<h1>Guia Perguntas</h1>
+	<hr>
+	<img src="/img/cross.jpg">
+	<h3>list of questions</h3>
+
+	<!---<%= %> exibir valor de uma variável--->
+
+	<p>my name is <%= name %>, I have <%= subs %> subs and, don't know <%= lang%></p>
+
+	<% if(msg) {%>
+		<h3>this is an error message!</h3>
+	<%} else {%>
+		no error
+	<%}%>
+
+	<% products.forEach((product) => {%>
+		<hr>
+		<%= product.name %><br>
+		<%= product.price %>
+	<%})%>
+
+</body>
+</html>
