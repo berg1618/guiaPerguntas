@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const connection = require('./database/database');
 const Pergunta = require('./database/Pergunta');
+const Resposta = require('./database/Resposta');
 //database
 
 connection.authenticate()
@@ -53,12 +54,25 @@ app.get('/pergunta/:id', (req, res) => {
 		where: {id : id}
 	}).then(pergunta => {
 		if(pergunta != undefined){ //pergunta achada
-			res.render('pergunta');
+			res.render('pergunta', {
+				pergunta: pergunta,
+			});
 		}else{//não encontrada
 			res.redirect('/');
 		}
 	})
 });
+
+app.post('/responder', (req, res) => {
+	const corpo = req.body.corpo;
+	const perguntaId = req.body.pergunta;
+	Resposta.create({
+		corpo: corpo,
+		perguntaId: perguntaId
+	}).then(() => {
+		res.redirect('/pergunta/'+perguntaId);//res.redirect('/pergunta/5')
+	});
+})
 
 app.listen(8080,() => {
 	console.log('app running');
