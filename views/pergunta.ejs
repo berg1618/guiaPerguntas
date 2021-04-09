@@ -14,8 +14,18 @@
 			<input type="hidden" name="pergunta" value="<%= pergunta.id %>">
 			<button type="submit" class="btn btn-dark">Answer it</button>
 			<br>
-			<label>Answers</label>
 		</form>
+		<hr>
+		<h3>Answers:</h3>
+		<hr>
+		<% respostas.forEach(respostas => { %>
+			<div class="card">
+				<div class="card-body">
+					<p><%= respostas.corpo %></p>
+				</div>
+			</div>
+			<br>
+		<% }) %> 
 	</div>
 
 </body>
